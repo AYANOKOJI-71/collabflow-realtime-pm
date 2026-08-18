@@ -1,0 +1,19 @@
+{
+  "name": "collabflow-realtime-pm",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.6.3",
+  "scripts": {
+    "dev": "concurrently --names api,web --prefix-colors blue,green \"pnpm --filter @collabflow/api dev\" \"pnpm --filter @collabflow/web dev\"",
+    "build": "pnpm --filter @collabflow/api build && pnpm --filter @collabflow/web build",
+    "test": "pnpm --filter @collabflow/api test",
+    "lint": "pnpm --filter @collabflow/api lint && pnpm --filter @collabflow/web lint",
+    "compose:up": "docker compose up --build",
+    "compose:down": "docker compose down -v",
+    "verify:realtime": "node scripts/verify-realtime.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "socket.io-client": "^4.8.1"
+  }
+}
